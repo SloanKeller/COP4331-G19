@@ -31,11 +31,11 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-
-      // Return array of JSON objects
-      $searchResults .= '{"Name" : "' . $row["Name"]. '",
-                          "Phone" : "' . $row["Phone"]. '",
-                          "Email" : "' . $row["Email"]. '"}';
+			
+			// Return array of JSON objects
+			$searchResults .= '{"Name" : "' . $row["Name"]. '",
+					  "Phone" : "' . $row["Phone"]. '",
+					  "Email" : "' . $row["Email"]. '"}';
 		}
 		
 		if( $searchCount == 0 )
