@@ -4,17 +4,17 @@
 	$name = $inData["name"];
     $phone = $inData["phone"]
     $email = $inData["email"]
-	$userId = $inData["userId"];
+	$userID = $inData["userID"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	if ($conn->connect_error) 
+	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (UserId, Name, Phone, Email) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $userId, $name, $phone, $email);
+		$stmt = $conn->prepare("INSERT into Contacts (userID, name, phone, email) VALUES(?,?,?,?)");
+		$stmt->bind_param("ssss", $userID, $name, $phone, $email);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
