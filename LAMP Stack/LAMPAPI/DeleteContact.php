@@ -16,14 +16,13 @@
 		$stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            returnWithError("")
+            returnWithError("");
         } else {
-            returnWithError("No contact found or unable to delete contact.")
+            returnWithError("No contact found or unable to delete contact.");
         }
 
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
 
 	function getRequestInfo()

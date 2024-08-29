@@ -1,10 +1,10 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$contactId = $inData["contactId"];
-    $contactName = $inData["contactName"];
-    $contactPhone = $inData["contactPhone"];
-    $contactEmail = $inData["contactEmail"];
+	$contactId = $inData["id"];
+    $contactName = $inData["name"];
+    $contactPhone = $inData["phone"];
+    $contactEmail = $inData["email"];
 	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -19,14 +19,13 @@
 		$stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            returnWithError("")
+            returnWithError("");
         } else {
-            returnWithError("No contact found or unable to update contact.")
+            returnWithError("No contact found or unable to update contact.");
         }
 
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
 
 	function getRequestInfo()
