@@ -5,7 +5,6 @@
     $contactName = $inData["name"];
     $contactPhone = $inData["phone"];
     $contactEmail = $inData["email"];
-	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
@@ -14,14 +13,14 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? WHERE ID=? AND UserID=?");
-		$stmt->bind_param("sssss", $contactName, $contactPhone, $contactEmail, $contactId, $userId);
+		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? WHERE ID=?");
+		$stmt->bind_param("ssss", $contactName, $contactPhone, $contactEmail, $contactId);
 		$stmt->execute();
 
         if ($stmt->affected_rows > 0) {
             returnWithError("");
         } else {
-            returnWithError("No contact found or unable to update contact.");
+            returnWithError("No contact found or unable to update contact or no changes made.");
         }
 
 		$stmt->close();
