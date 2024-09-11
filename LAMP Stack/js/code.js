@@ -183,3 +183,62 @@ function searchColor()
 	}
 	
 }
+
+function doSignUp()
+{
+	userId = 0;
+	
+	let firstName = document.getElementById("signupFirstName").value;
+	let lastName = document.getElementById("signupLastName").value;
+	let login = document.getElementById("signupUserName").value;
+	let password = document.getElementById("signupPassword").value;
+//	var hash = md5( password );
+	
+	if (!firstName || !lastName || !login || !password) 
+	{
+		document.getElementById("signupResult").innerHTML = "Please fill out all fields.";
+		return;
+	}
+	
+	document.getElementById("signupResult").innerHTML = "";
+
+	let tmp = {firstName:firstName,lastName:lastName,login:login,password:password};
+//	var tmp = {login:login,password:hash};
+	let jsonPayload = JSON.stringify( tmp );
+	
+	let url = urlBase + '/SignUp.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;
+		
+				if( userId < 1 )
+				{		
+					document.getElementById("signupResult").innerHTML = "User/Password combination incorrect";
+					return;
+				}
+		
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
+	
+				window.location.href = "color.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("signupResult").innerHTML = err.message;
+	}
+
+}
