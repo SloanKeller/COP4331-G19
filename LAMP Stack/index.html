@@ -1,22 +1,44 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
-
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
-
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
-
-</body>
+	<head>
+		<!--load in for bootstap-->
+	        <!-- Latest compiled and minified CSS -->
+	        <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel = "stylesheet">
+	        <meta charset = "utf-8">
+	        <meta name = "viewport" content = "width = device-width, initial-scale =1">
+	        <title>Contact Manager</title>
+	        <script type="text/javascript" src="js/md5.js"></script>
+	        <script type="text/javascript" src="js/code.js"></script>
+	        <link href="css/styles.css" rel="stylesheet">
+	        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	</head>
+	<body>
+		<nav class = "navbar navbar-light bg-light">
+            <div class = "container-fluid">
+                <a class = "navbar-brand" href ="#">
+                    <img src = "images/contactsLogo.jpg" width = "50" height = "50" alt = "">
+                    Contact Manager
+                </a>
+                <ul class = "navbar-nav ms-auto" style = "font-size: 30px;">
+                    <li class="nav-item"><a class = "nav-link active" href = "login.html">Sign in</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class = "container-fluid" style  ="display: flex; text-align: center;" >
+            <div class = "left-side col-6">
+                <h3>Welcome to Contact Manager</h3>
+                <p>The best place to store your contacts on the web</p>
+                <img src = "images/contactsLogo.jpg" style = "width: 50%;">
+            </div>
+            <div class = "right-side col-6">
+                <h1>Features</h1>
+                <ul>
+                    <li class = "contact-features">Access to your contacts on the web</li>
+                    <li class = "contact-features">Ability to Add, Edit, Delete Contacts</li>
+                    <li class = "contact-features">More features to be filled in later</li>
+                </ul>
+                <a id = "getStartedLink" href = "signup.html">Get started and sign up today </a>
+            </div>
+        </div> 
+	</body>
 </html>
