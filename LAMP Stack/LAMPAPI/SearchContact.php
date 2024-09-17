@@ -30,7 +30,8 @@
 			// Return array of JSON objects
 			$searchResults .= '{"Name" : "' . $row["Name"]. '",
 					  "Phone" : "' . $row["Phone"]. '",
-					  "Email" : "' . $row["Email"]. '"}';
+					  "Email" : "' . $row["Email"]. '"
+       					  "ID" : "' .$row["ID"]. '"}';
 		}
 		
 		if( $searchCount == 0 )
