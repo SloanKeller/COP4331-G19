@@ -416,122 +416,66 @@ function addContact()
     }
 }
 
-function validAddContact(firstName, lastName, phone, email) {
+function resetModal()
+{
+    let name = document.getElementById("contactTextName");
+    let phone = document.getElementById("contactTextPhone");
+    let email = document.getElementById("contactTextEmail");
 
-    var firstVAl = lastVal = phoneVal = emailVAl = true;
-
-    if (firstName == ("")) {
-        console.log("Please Enter a First Name")
-    }
-    else {
-        console.log("First Name is valid")
-        firstVAl = false;
-    }
-
-    if (lastName == ("")) {
-        console.log("Please Enter a Last Name")
-    }
-    else {
-        console.log("Last Name is valid")
-        lastVAl = false;
-    }
-
-    if (phone == ("")) {
-        console.log("Please Enter a Phone Number")
-    }
-    else {
-
-        var regExp = /^[\+]?[0-9]{0,3}\W?+[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-
-        if (regExp.test(phone) == false) {
-            console.log("Plese enter a vlid phone number");
-        }
-        else {
-
-            console.log("Phone number is valid");
-            phoneVAl = false;
-        }
-    }
-
-    if (email == ("")) {
-        console.log("Please Enter an Email")
-    }
-    else {
-        if (isValidEmail(email)) {
-            emailVAl = false;
-        }
-        else {
-            console.log("Please Enter a vlid Email")
-        }
-    }
-
-    return true;
+    name.value = "";
+    phone.value = "";
+    email.value = "";
 }
 
-function validSignUpForm(fName, lName, user, pass) {
+function closeModal()
+{
+	var modalInstance = bootstrap.Modal.getInstance("#addContactModal");
+	modalInstance.hide();
 
-    var fNameErr = lNameErr = userErr = passErr = true;
+}
+function validPhone(phone)
+{
+	let re = new RegExp("[0-9]{3}-[0-9]{3}-[0-9]{4}");
 
-    if (fName == "") {
-        console.log("FIRST NAME IS BLANK");
-    }
-    else {
-        console.log("first name IS VALID");
-        fNameErr = false;
-    }
-
-    if (lName == "") {
-        console.log("LAST NAME IS BLANK");
-    }
-    else {
-        console.log("LAST name IS VALID");
-        lNameErr = false;
-    }
-
-    if (user == "") {
-        console.log("USERNAME IS BLANK");
-    }
-    else {
-        var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
-
-        if (regex.test(user) == false) {
-            console.log("USERNAME IS NOT VALID");
-        }
-
-        else {
-
-            console.log("USERNAME IS VALID");
-            userErr = false;
-        }
-    }
-
-    if (pass == "") {
-        console.log("PASSWORD IS BLANK");
-    }
-    else {
-        var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
-
-        if (regex.test(pass) == false) {
-            console.log("PASSWORD IS NOT VALID");
-        }
-
-        else {
-
-            console.log("PASSWORD IS VALID");
-            passErr = false;
-        }
-    }
-
-    if ((fNameErr || lNameErr || userErr || passErr) == true) {
-        return false;
-
-    }
-
-    return true;
+	if(re.test(phone))
+	{
+		console.log("Valid Phone Number");
+		return true;
+	}
+	else
+	{	
+		console.log("Invalid Phone Number")
+		return false;
+	}
 }
 
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+function validEmail(email)
+{
+	let re = new RegExp("[a-zA-z0-9#$^!*_]{1,15}@[a-zA-z0-9#$^!*_]{1,15}\.[a-zA-z0-9#$^!*_]{2,4}");
+
+	if(re.test(email))
+	{
+		console.log("Valid Email");
+		return true;
+	}
+	else
+	{
+		console.log("Invalid Email");
+		return false;
+	}
+}
+
+function showPassword(password)
+{
+
+	if(password.type === "password")
+	{
+		password.type = "text";
+	}
+	else
+	{
+		password.type = "password";
+	}
+	
 }
 
